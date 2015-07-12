@@ -8,7 +8,8 @@ end
 
 get '/board/:id' do
   "board id is #{params["id"]}"
-  haml :board
+  @posts = Post.get(id => params["id"])
+  erb :board
 end
 
  
