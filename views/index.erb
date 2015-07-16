@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shitposte | <%= "board #{@id}" %> </title>
+    <title>Shitposte | index </title>
     <link rel='stylesheet' href='css/normalize.css'>
     <link rel='stylesheet' href='css/skeleton.css'>
     <link rel='stylesheet' href='css/style.css'>
   </head>
   <body>
-    <h1><%= "board #{@id}" %></h1>
+    
+    <h1>Where do you want to go?</h1>
+    <div class='container'>
+      <form action='/board' method='post'>
+        <input type='text' name='board_id' id='board_id'><label for='board_id'>GOTO BOARD</label>
+      </form>
+    </div>
 
     <script src='js/jquery-1.11.3.min.js'></script>
     <script src='js/app.js'></script>

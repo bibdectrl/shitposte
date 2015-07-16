@@ -1,19 +1,21 @@
 require 'sinatra'
-require 'haml'
+require 'sequel'
 
+DB = Sequel.sqlite("test.db")
 
 get '/' do
-  haml :_boiler
+  erb :index
 end
 
-get '/board/:id' do
-  "board id is #{params["id"]}"
-  @posts = Post.get(id => params["id"])
+post '/board' do
+  "board id is #{params["board_id"]}"
+  @posts = DB[:posts].where(:id => params["board_id"])
+  @id = params["board_id"]
   erb :board
 end
 
  
-post '/board/' do
+post '/board/:id/:post' do
   puts params["content"]
 end
 
