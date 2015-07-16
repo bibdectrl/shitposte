@@ -4,8 +4,7 @@ DB = Sequel.sqlite("test.db")
 
 DB.create_table :boards do
   primary_key :id
-  Text :url
-  Text :name
+  String :url
 end
 
 DB.create_table :posts do

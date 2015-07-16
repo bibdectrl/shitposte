@@ -7,11 +7,19 @@ get '/' do
   erb :index
 end
 
+get '/board' do
+  
+end
+
 post '/board' do
-  "board id is #{params["board_id"]}"
-  @posts = DB[:posts].where(:id => params["board_id"])
-  @id = params["board_id"]
-  erb :board
+  @board = DB[:boards].where(:url => params["board_id"])
+  if @board.empty?
+    erb :new_board
+  else  
+    @posts = DB[:posts].where(:board_id => params["board_id"])
+    @board_id = params["board_id"]
+    erb :board
+  end
 end
 
  
